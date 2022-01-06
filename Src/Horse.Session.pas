@@ -39,6 +39,7 @@ var
  LReturn: Boolean;
 begin
    try
+     LReturn := False;
      if Assigned(LHorseSessionJSONObject)then
        LReturn := LHorseSessionJSONObject(Req.Session<TJSONObject>)
      else if Assigned(LHorseSessionReq)then
