@@ -1,4 +1,4 @@
-unit Horse.Session;
+unit MDK.Horse.Session;
 
 interface
 
@@ -9,26 +9,26 @@ uses
  System.JSON;
 
  type
-  THorseSessionJSONObject = reference to function(ASessionJSONObject: TJSONObject): Boolean;
-  THorseSessionReq        = reference to function(ASessionReq: THorseRequest): Boolean;
+  THorseSessionMDKJSONObject = reference to function(ASessionJSONObject: TJSONObject): Boolean;
+  THorseSessionMDKReq        = reference to function(ASessionReq: THorseRequest): Boolean;
 
- function HorseSession(const AFunc: THorseSessionJSONObject): THorseCallback; overload;
- function HorseSession(const AFunc: THorseSessionReq): THorseCallback; overload
+ function HorseSessionMDK(const AFunc: THorseSessionMDKJSONObject): THorseCallback; overload;
+ function HorseSessionMDK(const AFunc: THorseSessionMDKReq): THorseCallback; overload
  procedure Middleware(Req: THorseRequest; Res: THorseResponse; Next: TProc); overload;
 
 implementation
 
 var
-  LHorseSessionReq: THorseSessionReq;
-  LHorseSessionJSONObject: THorseSessionJSONObject;
+  LHorseSessionReq: THorseSessionMDKReq;
+  LHorseSessionJSONObject: THorseSessionMDKJSONObject;
 
-function HorseSession(const AFunc: THorseSessionJSONObject): THorseCallback;
+function HorseSessionMDK(const AFunc: THorseSessionMDKJSONObject): THorseCallback;
 begin
    LHorseSessionJSONObject := AFunc;
    Result := Middleware;
 end;
 
-function HorseSession(const AFunc: THorseSessionReq): THorseCallback;
+function HorseSessionMDK(const AFunc: THorseSessionMDKReq): THorseCallback;
 begin
    LHorseSessionReq := AFunc;
    Result := Middleware;
